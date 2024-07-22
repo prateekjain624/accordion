@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const accordionItems = document.getElementById("accordion-items");
 
     comments.forEach((comment) => {
-      console.log(comments);
+      //   console.log(comment);
       const accordion = document.createElement("div");
       accordion.classList.add("accordion");
 
@@ -24,7 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
       accordionContent.innerText = comment.body;
 
       accordionHeading.addEventListener("click", () => {
-        accordionContent.classList.toggle("show");
+        const allContents = document.querySelectorAll(".accordian-content");
+        allContents.forEach((content) => {
+          console.log(content);
+          if (content !== accordionContent) {
+            content.classList.remove("show");
+          } else {
+            content.classList.toggle("show");
+          }
+        });
       });
 
       accordion.appendChild(accordionHeading);
